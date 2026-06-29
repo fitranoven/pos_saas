@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem -Path C:\\\\posFirstan\\\\apps\\\\backend, C:\\\\posFirstan\\\\apps\\\\frontend, C:\\\\posFirstan\\\\packages\\\\database -Recurse -Force -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch 'node_modules' } | Select-Object FullName | Format-Table -AutoSize -Wrap)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Select-String -Path \"C:\\\\posFirstan\\\\node_modules\\\\@prisma\\\\adapter-better-sqlite3\\\\dist\\\\index.d.ts\" -Pattern \"export|class|declare\" | Select-Object -First 20 | ForEach-Object { $_.Line })",
+      "PowerShell($f = \"C:\\\\posFirstan\\\\node_modules\\\\@prisma\\\\adapter-better-sqlite3\\\\dist\\\\index.d.ts\"; \\(Get-Content $f -Raw\\) -split \"`n\" | Select-String -Pattern \"url|constructor|InputParams|Options\" -Context 0,2 | Select-Object -First 25 | ForEach-Object { $_.Line })",
+      "PowerShell(Tee-Object *)",
+      "PowerShell(Set-Location C:\\\\posFirstan\\\\apps\\\\frontend; & npx vite build 2>&1 | Select-String -Pattern \"built in|error|dist/\" | Select-Object -First 8 | ForEach-Object { $_.Line })",
+      "PowerShell(Set-Location C:\\\\posFirstan\\\\apps\\\\frontend; & npx vite build 2>&1 | Select-String -Pattern \"built in|error|dist/assets\" | Select-Object -First 6 | ForEach-Object { $_.Line })"
+    ]
+  }
+}
